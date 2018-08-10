@@ -56,6 +56,7 @@ contract TicketSale {
     require(status == SaleStatus.OPEN, 'Ticket sale is not open');
     require(now <= saleStarted + saleLasts * 1 minutes, 'Ticket sale ended');
     require(ticketsSold < totalTickets, 'No more tickets left');
+    require(msg.value == ticketPrice, 'Invalid payment');
     _;
   }
 
